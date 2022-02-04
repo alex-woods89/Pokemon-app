@@ -1,0 +1,13 @@
+nav {
+    background-color: #FF3399;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: navy;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-brand {
+    color: navy;
+    font-weight: bold;
+}
