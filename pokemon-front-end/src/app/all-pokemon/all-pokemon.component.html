@@ -1,1 +1,12 @@
-<p>all-pokemon works!</p>
+<div class="row card-group">
+    <div class="col-4 mt-4" *ngFor="let p of pokemons">
+        <div class="card" style="width: 18rem;">
+            <img src="{{p?.data?.sprites?.front_default}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-secondary">{{p.name | titlecase}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted" *ngFor="let type of p.data?.types">{{type.type.name | titlecase}}</h6>
+              <a (click)="addToTeam(p)" class="btn btn-primary">Add To team</a>
+            </div>
+          </div>
+    </div>
+</div>

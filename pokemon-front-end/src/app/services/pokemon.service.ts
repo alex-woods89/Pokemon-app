@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon?limit=2000'
+const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 
 
 export interface Pokemon {
@@ -18,10 +18,6 @@ interface PokeAPIResponse {
   next: string,
   previous: string,
   results: Array<Pokemon>
-}
-
-interface PokeSprites {
-  data :any
 }
 
 

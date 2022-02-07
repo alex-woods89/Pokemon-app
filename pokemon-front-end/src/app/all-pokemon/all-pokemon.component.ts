@@ -18,4 +18,8 @@ export class AllPokemonComponent implements OnInit {
       console.log(this.pokemons)
   }
 
+  addToTeam(pokemon: any) {
+    console.log(pokemon)
+  }
+
 }
