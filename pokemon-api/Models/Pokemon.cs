@@ -13,5 +13,8 @@ namespace pokemon_api.Models
         public string? Name { get; set; }
         [Column("url")]
         public string? Url { get; set; }
+
+        [NotMapped]
+        public Object? Data { get; set; }   
     }
 }

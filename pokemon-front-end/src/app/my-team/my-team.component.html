@@ -1,1 +1,21 @@
-<p>my-team works!</p>
+<div class="row card-group">
+    <div class="col-3 mt-4" *ngFor="let p of team">
+        <div class="card" style="width: 18rem;">
+            <img src="{{p?.data?.sprites?.front_default}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-secondary">{{p.name | titlecase}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted" *ngFor="let type of p.data?.types">{{type.type.name | titlecase}}</h6>
+              <div class="row">
+                  
+              <button (click)="removeFromTeam(p)" class="btn btn-primary m-1 col">Remove from team</button>
+              <button (click)="showStats(); logPokemon(p)" class="btn btn-primary m-1 col">View Stats</button>
+                
+              </div>
+            </div>
+            <div *ngIf="showPokemonStats">
+                <app-view-pokemon [pokemon]="p"></app-view-pokemon>
+            </div>
+
+          </div>
+    </div>
+</div>

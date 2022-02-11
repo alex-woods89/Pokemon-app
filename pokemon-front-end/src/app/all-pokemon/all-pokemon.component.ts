@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../pokemon';
+import { PokemonTeamService } from '../services/pokemon-team.service';
 import { PokemonService } from '../services/pokemon.service';
 
 @Component({
@@ -8,18 +10,31 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class AllPokemonComponent implements OnInit {
 
-  pokemons: any
+  pokemons: Pokemon[] = []
+  searchTerm = ''
 
-  constructor(private pokeService: PokemonService) { }
+  constructor(private pokeService: PokemonService, private pokeTeamService: PokemonTeamService) { }
 
   ngOnInit(): void {
       this.pokemons = this.pokeService.getPokemons()
-
-      console.log(this.pokemons)
   }
 
-  addToTeam(pokemon: any) {
-    console.log(pokemon)
+  addToTeam(pokemon: Pokemon) {
+    this.pokeTeamService.addPokemonToTeam(pokemon).subscribe()
+  }
+
+  filterPokemon(keyPressed: any){
+    this.searchTerm = keyPressed
+
+    let filteredPokemons = this.pokemons.filter(x => x.name.startsWith(this.searchTerm))
+
+    if(filteredPokemons.length > 0){
+      this.pokemons = filteredPokemons
+    } else {
+      this.pokemons = this.pokeService.getPokemons()
+    }
+
+    console.log(this.searchTerm)
   }
 
 }

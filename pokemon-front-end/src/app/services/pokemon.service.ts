@@ -2,16 +2,9 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { Pokemon } from '../pokemon'
 
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151'
-
-
-export interface Pokemon {
-  name: string,
-  url: string
-  data: any
-}
-
 
 interface PokeAPIResponse {
   count: number,
@@ -19,7 +12,6 @@ interface PokeAPIResponse {
   previous: string,
   results: Array<Pokemon>
 }
-
 
 /**
  * PokéAPI service.

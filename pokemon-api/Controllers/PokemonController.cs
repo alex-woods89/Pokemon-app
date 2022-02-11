@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using pokemon_api.Contexts;
 using pokemon_api.Models;
+using System.Text.Json;
 
 namespace pokemon_api.Controllers
 {
@@ -10,17 +11,27 @@ namespace pokemon_api.Controllers
     {
 
         private readonly Pokebase _pokemonContext;
+        private IHttpClientFactory _httpClientFactory;
 
-        public PokemonController(Pokebase pokemonContext)
+        public PokemonController(Pokebase pokemonContext, IHttpClientFactory httpClientFactory)
         {
             _pokemonContext = pokemonContext;
+            _httpClientFactory = httpClientFactory;
         }
 
         // GET: api/<PokemonController>
         [HttpGet]
-        public IEnumerable<Pokemon> Get()
+        public async Task<IEnumerable<Pokemon>> Get()
         {
-            return _pokemonContext.Pokemons.ToList();
+            IEnumerable<Pokemon> pokemons = _pokemonContext.Pokemons.ToList().OrderBy(x => x.Name); 
+            HttpClient http = _httpClientFactory.CreateClient();
+
+            foreach (Pokemon pokemon in pokemons)
+            {
+                var data = http.GetStreamAsync(pokemon.Url);
+                pokemon.Data = JsonSerializer.DeserializeAsync<object>(await data).Result;
+            }
+            return pokemons;
         }
 
         // GET api/<PokemonController>/5
