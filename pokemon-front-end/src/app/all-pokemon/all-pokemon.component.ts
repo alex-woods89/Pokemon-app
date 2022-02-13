@@ -22,19 +22,4 @@ export class AllPokemonComponent implements OnInit {
   addToTeam(pokemon: Pokemon) {
     this.pokeTeamService.addPokemonToTeam(pokemon).subscribe()
   }
-
-  filterPokemon(keyPressed: any){
-    this.searchTerm = keyPressed
-
-    let filteredPokemons = this.pokemons.filter(x => x.name.startsWith(this.searchTerm))
-
-    if(filteredPokemons.length > 0){
-      this.pokemons = filteredPokemons
-    } else {
-      this.pokemons = this.pokeService.getPokemons()
-    }
-
-    console.log(this.searchTerm)
-  }
-
 }

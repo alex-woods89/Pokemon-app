@@ -1,9 +1,9 @@
 <div class="input-group">
-  <input  #box (keyup)="filterPokemon(box.value)" class="form-control border-end-0 border rounded-pill" type="text" placeholder="Search">
+  <input type="text" [(ngModel)]="searchTerm" class="form-control border-end-0 border rounded-pill m-3"  placeholder="Search">
 </div>
 
 <div class="row card-group">
-    <div class="col-3 mt-4" *ngFor="let p of pokemons">
+    <div class="col-3 mt-4" *ngFor="let p of pokemons | filter : searchTerm">
         <div class="card" style="width: 18rem;">
             <img src="{{p?.data?.sprites?.front_default}}" class="card-img-top" alt="...">
             <div class="card-body">

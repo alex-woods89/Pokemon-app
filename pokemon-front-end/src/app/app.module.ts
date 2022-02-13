@@ -9,6 +9,8 @@ import { AllPokemonComponent } from './all-pokemon/all-pokemon.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ViewPokemonComponent } from './view-pokemon/view-pokemon.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './pipes/filter.pipe';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import {  HttpClientModule } from '@angular/common/http';
     MyTeamComponent,
     AllPokemonComponent,
     HomePageComponent,
-    ViewPokemonComponent
+    ViewPokemonComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
