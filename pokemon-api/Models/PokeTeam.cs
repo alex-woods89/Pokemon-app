@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace pokemon_api.Models
 {
-    [Table("pokemon")]
-    public class Pokemon
+    [Table("teams")]
+    public class PokeTeam
     {
         [Key, Column("id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,13 +13,6 @@ namespace pokemon_api.Models
         [Column("name")]
         public string? Name { get; set; }
 
-        [Column("url")]
-        public string? Url { get; set; }
 
-        [Column("poketeam")]
-        public string? PokeTeam { get; set; }
-
-        [NotMapped]
-        public Object? Data { get; set; }   
     }
 }

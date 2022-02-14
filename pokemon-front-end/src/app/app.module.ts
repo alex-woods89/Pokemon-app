@@ -10,7 +10,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ViewPokemonComponent } from './view-pokemon/view-pokemon.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { TeamsComponent } from './teams/teams.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms'
     AllPokemonComponent,
     HomePageComponent,
     ViewPokemonComponent,
-    FilterPipe
+    FilterPipe,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,

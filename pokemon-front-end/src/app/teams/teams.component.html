@@ -1,0 +1,9 @@
+
+    <div class="col-auto">
+      <label for="team-name"class=" col-auto col-form-label">Create a Team</label>
+      <input type="text" [(ngModel)]="newTeam.name" class="form-control" id="team-name" placeholder="Team Name">
+    </div>
+    <div class="col-auto">
+      <button (click)="onSubmit()" class="btn btn-primary mb-3">Save</button>
+    </div>
+  
