@@ -10,8 +10,8 @@ namespace pokemon_api.Contexts
 
         }
 
-        public DbSet<Pokemon> Pokemons { get; set; } = null!;
-        public DbSet<PokeTeam> PokemonTeams { get; set; } = null!;
+        public DbSet<Pokemon> Pokemons { get; set; }
+        public DbSet<PokeTeam> PokemonTeams { get; set; }
 
     }
 }

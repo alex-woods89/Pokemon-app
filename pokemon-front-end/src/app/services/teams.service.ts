@@ -19,10 +19,4 @@ export class TeamsService {
   createTeam(team: Team){
     return this.http.post(POKETEAM_URL, team)
   }
-
-  deleteTeam(team: Team){
-    return this.http.delete(POKETEAM_URL + team.id)
-  }
-
-
 }

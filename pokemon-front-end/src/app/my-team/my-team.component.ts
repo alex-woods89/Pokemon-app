@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pokemon } from '../pokemon';
 import { PokemonTeamService } from '../services/pokemon-team.service';
+import { TeamsService } from '../services/teams.service';
+import { Team } from '../team';
 
 @Component({
   selector: 'app-my-team',
@@ -12,13 +14,10 @@ export class MyTeamComponent implements OnInit {
 
   constructor(private pokeTeamService: PokemonTeamService) { }
 
-  team: Pokemon[] = []
   showPokemonStats = false;
+  @Input() team: Team = new Team();
 
   ngOnInit(): void {
-    this.pokeTeamService.getTeam().subscribe(
-      response => this.team = response
-    )
   }
 
   logPokemon(pokemon: Pokemon){
@@ -26,10 +25,9 @@ export class MyTeamComponent implements OnInit {
   }
 
   removeFromTeam(pokemon: Pokemon){
-    this.pokeTeamService.deletePokemonFromTeam(pokemon).subscribe()
-    this.team.forEach((x,index) => {
-      if(x.id == pokemon.id) this.team.splice(index, 1)
-    });
+    let index = this.team.pokemons.indexOf(pokemon)
+    this.team.pokemons.splice(index, 1)
+    this.pokeTeamService.removePokemonFromTeam(pokemon).subscribe()
   }
 
   showStats(){

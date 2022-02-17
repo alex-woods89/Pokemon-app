@@ -11,7 +11,8 @@ import { ViewPokemonComponent } from './view-pokemon/view-pokemon.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import {FormsModule} from '@angular/forms';
-import { TeamsComponent } from './teams/teams.component'
+import { TeamsComponent } from './teams/teams.component';
+import { BattleComponent } from './battle/battle.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TeamsComponent } from './teams/teams.component'
     HomePageComponent,
     ViewPokemonComponent,
     FilterPipe,
-    TeamsComponent
+    TeamsComponent,
+    BattleComponent
   ],
   imports: [
     BrowserModule,

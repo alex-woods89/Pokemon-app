@@ -10,9 +10,9 @@ namespace pokemon_api.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Column("name")]
         public string? Name { get; set; }
 
+        public List<Pokemon> Pokemons { get; set; }
 
     }
 }

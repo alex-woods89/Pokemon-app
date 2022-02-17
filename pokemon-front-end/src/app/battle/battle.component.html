@@ -1,0 +1,25 @@
+<h3>Select Team A</h3>
+<ul>
+    <li *ngFor="let team of teams" (click)="selectTeamA(team)">{{team.name}}</li>
+</ul>
+
+<h3>Select Team B</h3>
+<ul>
+    <li *ngFor="let team of teams" (click)="selectTeamB(team)">{{team.name}}</li>
+</ul>
+
+<div *ngIf="winningTeam.name">
+    <h3 >Winning Team is {{winningTeam.name}}</h3>
+    <app-my-team [team]="winningTeam"></app-my-team>
+</div>
+
+<div *ngIf="!winningTeam.name">
+    <h3>Team A = {{teamA.name}}</h3>
+<app-my-team [team]="teamA"></app-my-team>
+<h3>Team B = {{teamB.name}}</h3>
+<app-my-team [team]="teamB"></app-my-team>
+</div>
+
+
+
+<button class="btn-primary" (click)="battle(teamA, teamB)">Battle Teams</button>

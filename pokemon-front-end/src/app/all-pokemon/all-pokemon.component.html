@@ -9,6 +9,9 @@
             <div class="card-body">
               <h5 class="card-title text-secondary">{{p.name | titlecase}}</h5>
               <h6 class="card-subtitle mb-2 text-muted" *ngFor="let type of p.data?.types">{{type.type.name | titlecase}}</h6>
+              <ul>
+                <li *ngFor="let team of teams" (click)="selectTeam(team)">{{team.name}}</li>
+              </ul>
               <a (click)="addToTeam(p)" class="btn btn-primary">Add To team</a>
             </div>
           </div>

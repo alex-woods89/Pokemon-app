@@ -6,4 +6,10 @@
     <div class="col-auto">
       <button (click)="onSubmit()" class="btn btn-primary mb-3">Save</button>
     </div>
+
+    <ul>
+      <li *ngFor="let t of teams" (click)="selectTeam(t)">{{t.name}} {{t.id}} {{t.pokemons}}</li>
+    </ul>
+
+    <app-my-team [team]="selectedTeam"></app-my-team>
   

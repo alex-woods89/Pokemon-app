@@ -10,14 +10,12 @@ namespace pokemon_api.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Column("name")]
         public string? Name { get; set; }
 
-        [Column("url")]
+        
         public string? Url { get; set; }
 
-        [Column("poketeam")]
-        public string? PokeTeam { get; set; }
+        public int PokeTeamID { get; set; }
 
         [NotMapped]
         public Object? Data { get; set; }   

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using pokemon_api.Contexts;
 using pokemon_api.Models;
-using System.Text.Json;
 
 namespace pokemon_api.Controllers
 {
@@ -21,17 +20,9 @@ namespace pokemon_api.Controllers
 
         // GET: api/<PokemonController>
         [HttpGet]
-        public async Task<IEnumerable<Pokemon>> Get()
+        public List<Pokemon> Get()
         {
-            IEnumerable<Pokemon> pokemons = _pokemonContext.Pokemons.ToList().OrderBy(x => x.Name); 
-            HttpClient http = _httpClientFactory.CreateClient();
-
-            foreach (Pokemon pokemon in pokemons)
-            {
-                var data = http.GetStreamAsync(pokemon.Url);
-                pokemon.Data = JsonSerializer.DeserializeAsync<object>(await data).Result;
-            }
-            return pokemons;
+            return _pokemonContext.Pokemons.OrderBy(x => x.Name).ToList(); 
         }
 
         // GET api/<PokemonController>/5
@@ -43,15 +34,15 @@ namespace pokemon_api.Controllers
 
         // POST api/<PokemonController>
         [HttpPost]
-        public void Post([FromBody] Pokemon pokemon)
+        public void Post(Pokemon pokemon)
         {
             _pokemonContext.Pokemons.Add(pokemon);
             _pokemonContext.SaveChanges();
         }
 
         // PUT api/<PokemonController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Pokemon pokemon)
+        [HttpPut]
+        public void Put(Pokemon pokemon)
         {
             _pokemonContext.Pokemons.Update(pokemon);
             _pokemonContext.SaveChanges();

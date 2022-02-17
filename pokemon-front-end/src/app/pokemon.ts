@@ -5,5 +5,5 @@ export class Pokemon {
     name: string = '';
     url: string = ''; 
     data: any;
-    pokeTeam?: Team
+    pokeTeamID?: number;
 }
